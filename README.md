@@ -1,2 +1,2 @@
-# crafting-planner
-Crafting Planner
+# craftin-planner
+Pyworks
