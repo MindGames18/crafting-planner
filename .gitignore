@@ -130,3 +130,5 @@ dmypy.json
 
 # Extracted Assets
 jar/assets
+
+.vscode
