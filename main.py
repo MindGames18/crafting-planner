@@ -1,5 +1,3 @@
-#Bla Bla Bla
-# immu
 import extracting_assets as ea
 import PySimpleGUI as sg
 import deleting_assets
