@@ -20,4 +20,4 @@ try:
 except:
     sg.popup('File doesnt exist, Assets could not be extracted', text_input)
     exit()
-deleting_assets.delete_assets()
+#deleting_assets.delete_assets()
