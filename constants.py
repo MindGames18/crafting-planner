@@ -8,3 +8,5 @@ import os
 # Directory Related constants
 script_dir = os.path.dirname(__file__)
 jar_dir = "\\jar"
+recipe_dir = "\\assets\\minecraft\\recipes\\"
+abs_recipe_dir = script_dir + jar_dir + recipe_dir
