@@ -1,6 +1,6 @@
-import extracting_assets as ea
+import asset_manager as am
 import PySimpleGUI as sg
-import deleting_assets
+
 
 sg.theme('BluePurple')
 
@@ -25,15 +25,16 @@ while True:  # Event Loop
     if event == 'Load':
         version = values['selected_version']
         try:
-            ea.extracting_assets(version)
+            am.extracting_assets(version)
             sg.popup('Assets Extracted')
+            sg.popup("test pop")
         except:
             sg.popup("Assets Could Not be extracted")
 
     # Event To Delete the Cache files
     if event == "Delete Local Cache":
         try:
-            deleting_assets.delete_assets()
+            am.delete_assets()
             sg.popup("Local Cache Deleted")
         except:
             sg.popup("Could not delete local cache")
