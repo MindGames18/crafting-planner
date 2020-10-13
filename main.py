@@ -8,8 +8,9 @@ version_list = ['1.12.2', 'WIP - NO USES']
 
 # The GUI Layout
 layout = [[sg.Text('Choose Your Minecraft Version'), sg.Text(size=(10, 1), key='-OUTPUT-')],
+          [sg.Image(filename=None)],
           [sg.OptionMenu((version_list), default_value=None,
-                         key='selected_version',tooltip= 'Version')],
+                         key='selected_version', tooltip='Version')],
           [sg.Button('Load'), sg.Button('Exit'), sg.Button('Delete Local Cache')]]
 
 window = sg.Window('Minecraft Loader', layout, size=(250, 100))

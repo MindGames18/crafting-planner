@@ -16,4 +16,4 @@ def extracting_assets(version):
     for file in archive.namelist():
         if file.startswith('assets'):
             archive.extract(file, ext_dir)
-            break
+            
