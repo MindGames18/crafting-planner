@@ -30,3 +30,13 @@ while True:  # Event Loop
             sg.popup("test pop")
         except:
             sg.popup("Assets Could Not be extracted")
+
+    # Event To Delete the Cache files
+    if event == "Delete Local Cache":
+        try:
+            am.delete_assets()
+            sg.popup("Local Cache Deleted")
+        except:
+            sg.popup("Could not delete local cache")
+
+window.close()
