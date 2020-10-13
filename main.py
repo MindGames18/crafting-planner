@@ -42,23 +42,25 @@ def loader_gui():
 
 def main_ui():
     sg.theme('BluePurple')
-    try :
+    try:
         available_recipes = jr.recipe_loader()
         available_recipes.sort()
-    except : 
+    except:
         loader_gui()
         available_recipes = jr.recipe_loader()
         available_recipes.sort()
 
     layout = [
         [sg.Text('Item Browser')],
-        [sg.Combo(available_recipes, readonly=True, key='recipe_item')],
-        [sg.OptionMenu((['1', '2']), default_value=None,
-                       key='selected_version', tooltip='Version')],
+        [sg.Combo(available_recipes, readonly=True,
+                  key='recipe_item', size=(30, 1))],
         [sg.Button(button_text='Asset Loader'), sg.Button('Exit')],
-        [sg.Button(button_text='1', size=(15, 6),border_width=5,image_filename='apple.png', image_size=(64, 64)),sg.Button(button_text='1', size=(15, 6),border_width=5),sg.Button(button_text='1', size=(15, 6),border_width=5)],
-        [sg.Button(button_text='1', size=(15, 6),border_width=5),sg.Button(button_text='1', size=(15, 6),border_width=5),sg.Button(button_text='1', size=(15, 6),border_width=5)],
-        [sg.Button(button_text='1', size=(15, 6),border_width=5),sg.Button(button_text='1', size=(15, 6),border_width=5),sg.Button(button_text='1', size=(15, 6),border_width=5)]
+        [sg.Button(button_text='1', size=(15, 6), border_width=5), sg.Button(
+            button_text='1', size=(15, 6), border_width=5), sg.Button(button_text='1', size=(15, 6), border_width=5)],
+        [sg.Button(button_text='1', size=(15, 6), border_width=5), sg.Button(button_text='1', size=(
+            15, 6), border_width=5), sg.Button(button_text='1', size=(15, 6), border_width=5)],
+        [sg.Button(button_text='1', size=(15, 6), border_width=5), sg.Button(button_text='1', size=(
+            15, 6), border_width=5), sg.Button(button_text='1', size=(15, 6), border_width=5)]
     ]
     window = sg.Window('Minecraft Recipe Viewer', layout, size=(800, 600))
     while True:  # Event Loop
