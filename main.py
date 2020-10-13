@@ -1,23 +1,32 @@
-import extracting_assets as ea
+import asset_manager as am
 import PySimpleGUI as sg
-import deleting_assets
 
-layout = [[sg.Text('Version Selector.')],
-          [sg.InputText()],
-          [sg.Submit(), sg.Cancel()]]
 
-window = sg.Window('Window Title', layout)
+sg.theme('BluePurple')
 
-event, values = window.read()
-window.close()
+version_list = ['1.12.2', 'WIP - NO USES']
 
-text_input = values[0]
+# The GUI Layout
+layout = [[sg.Text('Choose Your Minecraft Version'), sg.Text(size=(10, 1), key='-OUTPUT-')],
+          [sg.Image(filename=None)],
+          [sg.OptionMenu((version_list), default_value=None,
+                         key='selected_version', tooltip='Version')],
+          [sg.Button('Load'), sg.Button('Exit'), sg.Button('Delete Local Cache')]]
 
-try:
-    ea.extracting_assets(text_input)
-    sg.popup('Assets Extracted', text_input)
+window = sg.Window('Minecraft Loader', layout, size=(250, 100))
 
-except:
-    sg.popup('File doesnt exist, Assets could not be extracted', text_input)
-    exit()
-#deleting_assets.delete_assets()
+while True:  # Event Loop
+    event, values = window.read()
+    print(event, values)
+    if event == sg.WIN_CLOSED or event == 'Exit':
+        break
+
+    # Event To load the Assets File into the cache
+    if event == 'Load':
+        version = values['selected_version']
+        try:
+            am.extracting_assets(version)
+            sg.popup('Assets Extracted')
+            sg.popup("test pop")
+        except:
+            sg.popup("Assets Could Not be extracted")
