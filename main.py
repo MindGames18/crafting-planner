@@ -27,6 +27,7 @@ def loader_gui():
             try:
                 am.extracting_assets(version)
                 sg.popup('Assets Extracted')
+                break
             except:
                 sg.popup("Assets Could Not be extracted")
             # Event To Delete the Cache files
@@ -41,8 +42,14 @@ def loader_gui():
 
 def main_ui():
     sg.theme('BluePurple')
-    available_recipes = jr.recipe_loader()
-    available_recipes.sort()
+    try :
+        available_recipes = jr.recipe_loader()
+        available_recipes.sort()
+    except : 
+        loader_gui()
+        available_recipes = jr.recipe_loader()
+        available_recipes.sort()
+
     layout = [
         [sg.Text('Item Browser')],
         [sg.Combo(available_recipes, readonly=True, key='recipe_item')],
@@ -56,6 +63,7 @@ def main_ui():
     window = sg.Window('Minecraft Recipe Viewer', layout, size=(800, 600))
     while True:  # Event Loop
         event, values = window.read()
+
         if event == sg.WIN_CLOSED or event == 'Exit':
             window.close()
             break
