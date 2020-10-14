@@ -2,6 +2,10 @@ import asset_manager as am
 import PySimpleGUI as sg
 import json_read as jr
 
+'''
+    The asset loader UI
+'''
+
 
 def loader_gui():
     sg.theme('BluePurple')
@@ -40,6 +44,11 @@ def loader_gui():
                 sg.popup("Could not delete local cache")
 
 
+'''
+    The Main UI method 
+'''
+
+
 def main_ui():
     sg.theme('BluePurple')
     try:
@@ -50,7 +59,7 @@ def main_ui():
         available_recipes = jr.recipe_loader()
         available_recipes.sort()
 
-    x = am.convert_to_bytes('apple.png', (128, 128))
+    x = am.convert_to_bytes('apple.png')
 
     layout = [
         [sg.Text('Item Browser')],
@@ -75,9 +84,9 @@ def main_ui():
 
         if event == 'Asset Loader':
             loader_gui()
-        
+
         if event == 'update':
-            window['a'].update(image_data = x)
+            window['a'].update(image_data=x)
 
 
 main_ui()

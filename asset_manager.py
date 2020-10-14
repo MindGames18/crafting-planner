@@ -38,8 +38,8 @@ def delete_assets():
     shutil.rmtree(abs_dir_path, onerror=remove_readonly)
 
 
-def convert_to_bytes(file_or_bytes, resize=None):
-    '''
+'''
+    convert_to_byte method 
     Will convert into bytes and optionally resize an image that is a file or a base64 bytes object.
     Turns into  PNG format in the process so that can be displayed by tkinter
     :param file_or_bytes: either a string filename or a bytes base64 image object
@@ -49,21 +49,21 @@ def convert_to_bytes(file_or_bytes, resize=None):
     :return: (bytes) a byte-string object
     :rtype: (bytes)
     '''
+
+
+def convert_to_bytes(file_or_bytes):
+
     if isinstance(file_or_bytes, str):
         img = PIL.Image.open(file_or_bytes)
     else:
         try:
             img = PIL.Image.open(io.BytesIO(base64.b64decode(file_or_bytes)))
-        except Exception as e:
+        except:
             dataBytesIO = io.BytesIO(file_or_bytes)
             img = PIL.Image.open(dataBytesIO)
 
-    cur_width, cur_height = img.size
-    if resize:
-        new_width, new_height = resize
-        scale = min(new_height/cur_height, new_width/cur_width)
-        img = img.resize(
-            (128, 128), resample=PIL.Image.NEAREST)
+    img = img.resize(
+        (128, 128), resample=PIL.Image.NEAREST)
     bio = io.BytesIO()
     img.save(bio, format="PNG")
     del img
