@@ -73,7 +73,8 @@ def main_ui():
 
     # The layout of the UI
     layout = [
-        [sg.Text('Item Browser')],
+        [sg.Text('Minecraft Recipe Viewer', size=(
+            42, 1), justification='center', font=("Helvetica", 25), relief=sg.RELIEF_RIDGE)],
         [sg.Combo(available_recipes, readonly=True,
                   key='recipe_item', size=(30, 1))],
 
