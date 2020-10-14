@@ -59,23 +59,22 @@ def main_ui():
         available_recipes = jr.recipe_loader()
         available_recipes.sort()
 
-    x = am.convert_to_bytes('apple_template.png')
-
     layout = [
         [sg.Text('Item Browser')],
         [sg.Combo(available_recipes, readonly=True,
                   key='recipe_item', size=(30, 1))],
-        
-        [sg.Button(button_text='', size=(15, 6), border_width=5,
-                   image_filename='apple_template.png', image_data=None, disabled=False, tooltip=None, pad=(15, 15), button_color=('white','white'), key='AA'), sg.Button(button_text='', size=(15, 6), border_width=5, image_filename='apple_template.png', image_data=None, disabled=False, tooltip=None, pad=(15, 15), button_color=('white','white'), key='BB'), sg.Button(button_text='', size=(15, 6), border_width=5, image_filename='apple_template.png', image_data=None, disabled=False, tooltip=None, pad=(15, 15), button_color=('white','white'), key='CC')],
-        [sg.Button(button_text='', size=(15, 6), border_width=5,
-                   image_filename='apple_template.png', image_data=None, disabled=False, tooltip=None, pad=(15, 15), button_color=('white','white'), key='DD'), sg.Button(button_text='', size=(15, 6), border_width=5, image_filename='apple_template.png', image_data=None, disabled=False, tooltip=None, pad=(15, 15), button_color=('white','white'), key='EE'), sg.Button(button_text='', size=(15, 6), border_width=5, image_filename='apple_template.png', image_data=None, disabled=False, tooltip=None, pad=(15, 15), button_color=('white','white'), key='FF')],
-        [sg.Button(button_text='', size=(15, 6), border_width=5,
-                   image_filename='apple_template.png', image_data=None, disabled=False, tooltip=None, pad=(15, 15), button_color=('white','white'), key='GG'), sg.Button(button_text='', size=(15, 6), border_width=5, image_filename='apple_template.png', image_data=None, disabled=False, tooltip=None, pad=(15, 15), button_color=('white','white'), key='HH'), sg.Button(button_text='', size=(15, 6), border_width=5, image_filename='apple_template.png', image_data=None, disabled=False, tooltip=None, pad=(15, 15), button_color=('white','white'), key='II')],
 
-        [sg.Button(button_text="update"),sg.Button(button_text='Asset Loader'), sg.Button('Exit')]
+        [sg.Button(button_text='', size=(15, 6), border_width=5,
+                   image_filename='apple_template.png', image_data=None, disabled=False, tooltip=None, pad=(15, 15), button_color=('white', 'white'), key='AA'), sg.Button(button_text='', size=(15, 6), border_width=5, image_filename='apple_template.png', image_data=None, disabled=False, tooltip=None, pad=(15, 15), button_color=('white', 'white'), key='BB'), sg.Button(button_text='', size=(15, 6), border_width=5, image_filename='apple_template.png', image_data=None, disabled=False, tooltip=None, pad=(15, 15), button_color=('white', 'white'), key='CC')],
+        [sg.Button(button_text='', size=(15, 6), border_width=5,
+                   image_filename='apple_template.png', image_data=None, disabled=False, tooltip=None, pad=(15, 15), button_color=('white', 'white'), key='DD'), sg.Button(button_text='', size=(15, 6), border_width=5, image_filename='apple_template.png', image_data=None, disabled=False, tooltip=None, pad=(15, 15), button_color=('white', 'white'), key='EE'), sg.Button(button_text='', size=(15, 6), border_width=5, image_filename='apple_template.png', image_data=None, disabled=False, tooltip=None, pad=(15, 15), button_color=('white', 'white'), key='FF')],
+        [sg.Button(button_text='', size=(15, 6), border_width=5,
+                   image_filename='apple_template.png', image_data=None, disabled=False, tooltip=None, pad=(15, 15), button_color=('white', 'white'), key='GG'), sg.Button(button_text='', size=(15, 6), border_width=5, image_filename='apple_template.png', image_data=None, disabled=False, tooltip=None, pad=(15, 15), button_color=('white', 'white'), key='HH'), sg.Button(button_text='', size=(15, 6), border_width=5, image_filename='apple_template.png', image_data=None, disabled=False, tooltip=None, pad=(15, 15), button_color=('white', 'white'), key='II')],
+
+        [sg.Button(button_text="update"), sg.Button(
+            button_text='Asset Loader'), sg.Button('Exit')]
     ]
-    window = sg.Window('Minecraft Recipe Viewer', layout, size=(800, 700))
+    window = sg.Window('Minecraft Recipe Viewer', layout, size=(800, 650))
     while True:  # Event Loop
         event, values = window.read()
 
@@ -85,9 +84,6 @@ def main_ui():
 
         if event == 'Asset Loader':
             loader_gui()
-
-        if event == 'update':
-            window['AA'].update(image_data=x)
 
 
 main_ui()
