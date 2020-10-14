@@ -3,9 +3,10 @@ import constants as c
 import json
 
 
-recipe_name = []
+#recipe_name = 
 ing_name = []
 recipe_count = 0
+newpat = [[0,0,0],[0,0,0],[0,0,0]]
 
 for filename in os.listdir(c.abs_recipe_dir):
     abs_file_path = c.abs_recipe_dir + filename
@@ -14,15 +15,34 @@ for filename in os.listdir(c.abs_recipe_dir):
 
     name = data["result"]["item"]
     name = name.replace("minecraft:", "")
-    recipe_name.append(name)
-    print(name)
 
+    ing_name = []
     if data["type"] == "crafting_shaped":
-        for item in data["key"]:
-            if type(data["key"][item]) is dict:
-                print(data["key"][item]["item"],)
-        print("\n")
-            
+        if len(data["pattern"])*len(data["pattern"][0]) == 9:
+            newpat = data["pattern"]
+            print("size = 9")
+            #print(newpat)
+        else:
+            print("size != 9")
+            for i in range(len(data["pattern"])):
+                for j in range(len(data["pattern"][0])):
+                    newpat[i][j] = data["pattern"][i][j]
+            #print(newpat)
+
+
+        for i in range(len(newpat)):
+            for j in range(len(newpat)):
+                for k in data["key"]:
+                        if newpat[i][j] == " " or newpat[i][j] == 0:
+                            ing_name.append("NULL")
+                        else:
+                            ing_name.append(data["key"][k]["item"])
+
+
+        print(name,"\n",ing_name)
+        ing_name = []
+        newpat = [[0,0,0],[0,0,0],[0,0,0]]
+        exit()
 
 '''
     # no of each raw materials needed
