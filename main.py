@@ -19,7 +19,10 @@ def loader_gui():
                              key='selected_version', tooltip='Version')],
               [sg.Button('Load'), sg.Button('Exit'), sg.Button('Delete Local Cache')]]
 
+    # Window Creation
     window = sg.Window('Minecraft Loader', layout, size=(250, 100))
+
+    #---------- The Beginnning of Event Loop ----------#
     while True:  # Event Loop
         event, values = window.read()
         if event == sg.WIN_CLOSED or event == 'Exit':
@@ -42,6 +45,7 @@ def loader_gui():
                 sg.popup("Local Cache Deleted")
             except:
                 sg.popup("Could not delete local cache")
+        #---------- The End of Event Loop ----------#
 
 
 '''
@@ -51,6 +55,8 @@ def loader_gui():
 
 def main_ui():
     sg.theme('BluePurple')
+
+    # Checking if Assets have been loaded already
     try:
         available_recipes = jr.recipe_loader()
         available_recipes.sort()
@@ -59,6 +65,13 @@ def main_ui():
         available_recipes = jr.recipe_loader()
         available_recipes.sort()
 
+    # Coloumn Element
+    col = [[sg.Text('col Row 1', text_color='white', background_color='blue')],
+           [sg.Text('col Row 2', text_color='white',
+                    background_color='blue'), sg.Input('col input 1')],
+           [sg.Text('col Row 3', text_color='white', background_color='blue'), sg.Input('col input 2')]]
+
+    # The layout of the UI
     layout = [
         [sg.Text('Item Browser')],
         [sg.Combo(available_recipes, readonly=True,
@@ -74,8 +87,12 @@ def main_ui():
         [sg.Button(button_text="update"), sg.Button(
             button_text='Asset Loader'), sg.Button('Exit')]
     ]
+
+    # Window Creation
     window = sg.Window('Minecraft Recipe Viewer', layout, size=(800, 650))
-    while True:  # Event Loop
+
+    #---------- The Beginnning of Event Loop ----------#
+    while True:
         event, values = window.read()
 
         if event == sg.WIN_CLOSED or event == 'Exit':
@@ -84,6 +101,7 @@ def main_ui():
 
         if event == 'Asset Loader':
             loader_gui()
+    #---------- The End of Event Loop ------------------#
 
 
 main_ui()
