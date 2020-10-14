@@ -50,17 +50,20 @@ def main_ui():
         available_recipes = jr.recipe_loader()
         available_recipes.sort()
 
+    x = am.convert_to_bytes('apple.png', (128, 128))
+
     layout = [
         [sg.Text('Item Browser')],
         [sg.Combo(available_recipes, readonly=True,
                   key='recipe_item', size=(30, 1))],
         [sg.Button(button_text='Asset Loader'), sg.Button('Exit')],
-        [sg.Button(button_text='1', size=(15, 6), border_width=5), sg.Button(
+        [sg.Button(button_text='1', size=(15, 6), border_width=5, image_filename='apple.png', image_data=None, key='a'), sg.Button(
             button_text='1', size=(15, 6), border_width=5), sg.Button(button_text='1', size=(15, 6), border_width=5)],
         [sg.Button(button_text='1', size=(15, 6), border_width=5), sg.Button(button_text='1', size=(
             15, 6), border_width=5), sg.Button(button_text='1', size=(15, 6), border_width=5)],
         [sg.Button(button_text='1', size=(15, 6), border_width=5), sg.Button(button_text='1', size=(
-            15, 6), border_width=5), sg.Button(button_text='1', size=(15, 6), border_width=5)]
+            15, 6), border_width=5), sg.Button(button_text='1', size=(15, 6), border_width=5)],
+        [sg.Button(button_text="update")]
     ]
     window = sg.Window('Minecraft Recipe Viewer', layout, size=(800, 600))
     while True:  # Event Loop
@@ -72,6 +75,9 @@ def main_ui():
 
         if event == 'Asset Loader':
             loader_gui()
+        
+        if event == 'update':
+            window['a'].update(image_data = x)
 
 
 main_ui()
