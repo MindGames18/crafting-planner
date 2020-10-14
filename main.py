@@ -66,24 +66,22 @@ def main_ui():
         available_recipes.sort()
 
     # Coloumn Element
-    col = [[sg.Text('col Row 1', text_color='white', background_color='blue')],
-           [sg.Text('col Row 2', text_color='white',
-                    background_color='blue'), sg.Input('col input 1')],
-           [sg.Text('col Row 3', text_color='white', background_color='blue'), sg.Input('col input 2')]]
-
+    col = [
+        [sg.Button(button_text='', size=(15, 6), border_width=5,
+                   image_filename='apple_template.png', image_data=None, disabled=False, tooltip=None, pad=(15, 15), button_color=('white', 'white'), key='AA'), sg.Button(button_text='', size=(15, 6), border_width=5, image_filename='apple_template.png', image_data=None, disabled=False, tooltip=None, pad=(15, 15), button_color=('white', 'white'), key='BB'), sg.Button(button_text='', size=(15, 6), border_width=5, image_filename='apple_template.png', image_data=None, disabled=False, tooltip=None, pad=(15, 15), button_color=('white', 'white'), key='CC')],
+        [sg.Button(button_text='', size=(15, 6), border_width=5,
+                   image_filename='apple_template.png', image_data=None, disabled=False, tooltip=None, pad=(15, 15), button_color=('white', 'white'), key='DD'), sg.Button(button_text='', size=(15, 6), border_width=5, image_filename='apple_template.png', image_data=None, disabled=False, tooltip=None, pad=(15, 15), button_color=('white', 'white'), key='EE'), sg.Button(button_text='', size=(15, 6), border_width=5, image_filename='apple_template.png', image_data=None, disabled=False, tooltip=None, pad=(15, 15), button_color=('white', 'white'), key='FF')],
+        [sg.Button(button_text='', size=(15, 6), border_width=5,
+                   image_filename='apple_template.png', image_data=None, disabled=False, tooltip=None, pad=(15, 15), button_color=('white', 'white'), key='GG'), sg.Button(button_text='', size=(15, 6), border_width=5, image_filename='apple_template.png', image_data=None, disabled=False, tooltip=None, pad=(15, 15), button_color=('white', 'white'), key='HH'), sg.Button(button_text='', size=(15, 6), border_width=5, image_filename='apple_template.png', image_data=None, disabled=False, tooltip=None, pad=(15, 15), button_color=('white', 'white'), key='II')]
+    ]
     # The layout of the UI
     layout = [
         [sg.Text('Minecraft Recipe Viewer', size=(
             42, 1), justification='center', font=("Helvetica", 25), relief=sg.RELIEF_RIDGE)],
         [sg.Combo(available_recipes, readonly=True,
                   key='recipe_item', size=(30, 1))],
-
-        [sg.Button(button_text='', size=(15, 6), border_width=5,
-                   image_filename='apple_template.png', image_data=None, disabled=False, tooltip=None, pad=(15, 15), button_color=('white', 'white'), key='AA'), sg.Button(button_text='', size=(15, 6), border_width=5, image_filename='apple_template.png', image_data=None, disabled=False, tooltip=None, pad=(15, 15), button_color=('white', 'white'), key='BB'), sg.Button(button_text='', size=(15, 6), border_width=5, image_filename='apple_template.png', image_data=None, disabled=False, tooltip=None, pad=(15, 15), button_color=('white', 'white'), key='CC')],
-        [sg.Button(button_text='', size=(15, 6), border_width=5,
-                   image_filename='apple_template.png', image_data=None, disabled=False, tooltip=None, pad=(15, 15), button_color=('white', 'white'), key='DD'), sg.Button(button_text='', size=(15, 6), border_width=5, image_filename='apple_template.png', image_data=None, disabled=False, tooltip=None, pad=(15, 15), button_color=('white', 'white'), key='EE'), sg.Button(button_text='', size=(15, 6), border_width=5, image_filename='apple_template.png', image_data=None, disabled=False, tooltip=None, pad=(15, 15), button_color=('white', 'white'), key='FF')],
-        [sg.Button(button_text='', size=(15, 6), border_width=5,
-                   image_filename='apple_template.png', image_data=None, disabled=False, tooltip=None, pad=(15, 15), button_color=('white', 'white'), key='GG'), sg.Button(button_text='', size=(15, 6), border_width=5, image_filename='apple_template.png', image_data=None, disabled=False, tooltip=None, pad=(15, 15), button_color=('white', 'white'), key='HH'), sg.Button(button_text='', size=(15, 6), border_width=5, image_filename='apple_template.png', image_data=None, disabled=False, tooltip=None, pad=(15, 15), button_color=('white', 'white'), key='II')],
+        [sg.Frame('Output', [[sg.Text("Sample Output area", size=(30, 30))]]),
+         sg.Column(col, background_color='black')],
 
         [sg.Button(button_text="update"), sg.Button(
             button_text='Asset Loader'), sg.Button('Exit')]
