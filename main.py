@@ -15,7 +15,7 @@ def loader_gui():
     # The GUI Layout
     layout = [[sg.Text('Choose Your Minecraft Version'), sg.Text(size=(10, 1), key='-OUTPUT-')],
               [sg.Image(filename=None)],
-              [sg.OptionMenu((version_list), default_value=None,
+              [sg.OptionMenu((version_list),
                              key='selected_version', tooltip='Version')],
               [sg.Button('Load'), sg.Button('Exit'), sg.Button('Delete Local Cache')]]
 
@@ -45,7 +45,7 @@ def loader_gui():
 
 
 '''
-    The Main UI method 
+    The Main UI method
 '''
 
 
@@ -59,22 +59,23 @@ def main_ui():
         available_recipes = jr.recipe_loader()
         available_recipes.sort()
 
-    x = am.convert_to_bytes('apple.png')
+    x = am.convert_to_bytes('apple_template.png')
 
     layout = [
         [sg.Text('Item Browser')],
         [sg.Combo(available_recipes, readonly=True,
                   key='recipe_item', size=(30, 1))],
-        [sg.Button(button_text='Asset Loader'), sg.Button('Exit')],
-        [sg.Button(button_text='1', size=(15, 6), border_width=5, image_filename='apple.png', image_data=None, key='a'), sg.Button(
-            button_text='1', size=(15, 6), border_width=5), sg.Button(button_text='1', size=(15, 6), border_width=5)],
-        [sg.Button(button_text='1', size=(15, 6), border_width=5), sg.Button(button_text='1', size=(
-            15, 6), border_width=5), sg.Button(button_text='1', size=(15, 6), border_width=5)],
-        [sg.Button(button_text='1', size=(15, 6), border_width=5), sg.Button(button_text='1', size=(
-            15, 6), border_width=5), sg.Button(button_text='1', size=(15, 6), border_width=5)],
-        [sg.Button(button_text="update")]
+        
+        [sg.Button(button_text='', size=(15, 6), border_width=5,
+                   image_filename='apple_template.png', image_data=None, disabled=False, tooltip=None, pad=(15, 15), button_color=('white','white'), key='AA'), sg.Button(button_text='', size=(15, 6), border_width=5, image_filename='apple_template.png', image_data=None, disabled=False, tooltip=None, pad=(15, 15), button_color=('white','white'), key='BB'), sg.Button(button_text='', size=(15, 6), border_width=5, image_filename='apple_template.png', image_data=None, disabled=False, tooltip=None, pad=(15, 15), button_color=('white','white'), key='CC')],
+        [sg.Button(button_text='', size=(15, 6), border_width=5,
+                   image_filename='apple_template.png', image_data=None, disabled=False, tooltip=None, pad=(15, 15), button_color=('white','white'), key='DD'), sg.Button(button_text='', size=(15, 6), border_width=5, image_filename='apple_template.png', image_data=None, disabled=False, tooltip=None, pad=(15, 15), button_color=('white','white'), key='EE'), sg.Button(button_text='', size=(15, 6), border_width=5, image_filename='apple_template.png', image_data=None, disabled=False, tooltip=None, pad=(15, 15), button_color=('white','white'), key='FF')],
+        [sg.Button(button_text='', size=(15, 6), border_width=5,
+                   image_filename='apple_template.png', image_data=None, disabled=False, tooltip=None, pad=(15, 15), button_color=('white','white'), key='GG'), sg.Button(button_text='', size=(15, 6), border_width=5, image_filename='apple_template.png', image_data=None, disabled=False, tooltip=None, pad=(15, 15), button_color=('white','white'), key='HH'), sg.Button(button_text='', size=(15, 6), border_width=5, image_filename='apple_template.png', image_data=None, disabled=False, tooltip=None, pad=(15, 15), button_color=('white','white'), key='II')],
+
+        [sg.Button(button_text="update"),sg.Button(button_text='Asset Loader'), sg.Button('Exit')]
     ]
-    window = sg.Window('Minecraft Recipe Viewer', layout, size=(800, 600))
+    window = sg.Window('Minecraft Recipe Viewer', layout, size=(800, 700))
     while True:  # Event Loop
         event, values = window.read()
 
@@ -86,7 +87,7 @@ def main_ui():
             loader_gui()
 
         if event == 'update':
-            window['a'].update(image_data=x)
+            window['AA'].update(image_data=x)
 
 
 main_ui()
