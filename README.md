@@ -9,3 +9,7 @@ Plan your Minecraft stuff!
 🛠️ Steps for crafting - WIP
 
 more features to come....
+
+## Current Dependencies 
+PILLOW - Python's Image Library
+PySimpleGUI - GUI's Framework
