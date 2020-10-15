@@ -105,15 +105,12 @@ def main_ui():
 
         # User Generated event when they select an item from the list
         if event == 'recipe_item':
-            x = rm.unique_items_required(values['recipe_item'])
 
-            for items in x:
+            recipe_item = values['recipe_item']
+            x = rm.unique_items_required(recipe_item)
 
-                path_to_texture = am.path_to_asset_generator(
-                    values['recipe_item'])
-                print(path_to_texture)
-
-            # Write Helper method to determine shape/shapeless
+            # Helper to determine shaped/shapeless
+            recipe_type = rm.recipe_shape_helper(recipe_item)
 
         if event == 'empty_grid':
             grid_elements = ['AA', 'BB', 'CC',

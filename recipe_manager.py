@@ -98,3 +98,22 @@ def recipe_loader():
         file_names.append(tmp_file_name)
 
     return file_names
+
+
+'''
+    Method to determine if the item is shaped or shapeless
+    parameter  Item_name
+    returns string (Shape/shapeless)
+'''
+
+
+def recipe_shape_helper(item_name):
+
+    item_path = constants.abs_recipe_dir + item_name + ".json"
+    fhandle = open(item_path).read()
+    json_obj = json.loads(fhandle)
+
+    if json_obj["type"] == "crafting_shaped":
+        return "shaped"
+    else:
+        return "shapeless"
