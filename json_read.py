@@ -43,6 +43,7 @@ def recipe_loader():
     shapeless = list()
     shaped = list()
     f_recipe = list()
+    file_names = list()
 
     # reads the files in the folder
     for filename in os.listdir(constants.abs_recipe_dir):
@@ -63,5 +64,7 @@ def recipe_loader():
             fname = data["result"]["item"]
             fname = fname.replace("minecraft:", "")
             f_recipe.append(fname)
+        tmp_file_name = filename.replace(".json", "")
+        file_names.append(tmp_file_name)
 
-    return f_recipe
+    return file_names
