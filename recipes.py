@@ -2,7 +2,7 @@ import os
 import json
 
 #add a dropdown with all the recipe names
-r_name = "stick"
+r_name = "anvil"
 
 script_dir = os.path.dirname(__file__)
 sub_dir = '\\jar\\assets\\minecraft\\recipes\\'
