@@ -107,10 +107,16 @@ def main_ui():
         if event == 'recipe_item':
 
             recipe_item = values['recipe_item']
-            x = rm.unique_items_required(recipe_item)
+            unique_item_dictionary = rm.unique_items_required(recipe_item)
+            unique_item_list = rm.unique_item_list_converter(unique_item_dictionary)
 
+            for item in unique_item_list :
+                
             # Helper to determine shaped/shapeless
             recipe_type = rm.recipe_shape_helper(recipe_item)
+
+            if recipe_type == "shapeless":
+                print('sha')
 
         if event == 'empty_grid':
             grid_elements = ['AA', 'BB', 'CC',

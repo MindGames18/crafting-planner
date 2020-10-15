@@ -117,3 +117,22 @@ def recipe_shape_helper(item_name):
         return "shaped"
     else:
         return "shapeless"
+
+
+'''
+    method to convert the unique item dictionary into a list
+    parameter unique_item_dictionary
+    returns unique_item_list
+'''
+
+
+def unique_item_list_converter(u_dict):
+
+    u_items = list()
+    unique_item_list = list()
+    for items in u_dict:
+        u_items.append(items['item'])
+    for x in u_items:
+        y = x.replace("minecraft:", "")
+        unique_item_list.append(y)
+    return unique_item_list
