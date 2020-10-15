@@ -1,6 +1,6 @@
 import asset_manager as am
 import PySimpleGUI as sg
-import json_read as jr
+import recipe_manager as rm
 
 '''
     The asset loader UI
@@ -50,6 +50,8 @@ def loader_gui():
 
 '''
     The Main UI method
+    No parametres
+    No returns
 '''
 
 
@@ -58,11 +60,11 @@ def main_ui():
 
     # Checking if Assets have been loaded already
     try:
-        available_recipes = jr.recipe_loader()
+        available_recipes = rm.recipe_loader()
         available_recipes.sort()
     except:
         loader_gui()
-        available_recipes = jr.recipe_loader()
+        available_recipes = rm.recipe_loader()
         available_recipes.sort()
 
     # Coloumn Element
@@ -78,8 +80,8 @@ def main_ui():
     layout = [
         [sg.Text('Minecraft Recipe Viewer', size=(
             42, 1), justification='center', font=("Helvetica", 25), relief=sg.RELIEF_RIDGE)],
-        [sg.Combo(available_recipes, readonly=True,
-                  key='recipe_item', size=(30, 1))],
+        [sg.Combo(available_recipes, font=('Helvetica', 11), readonly=True,
+                  key='recipe_item', size=(30, 1), enable_events=True)],
         [sg.Frame('Output', [[sg.Text("Sample Output area", size=(30, 30))]]),
          sg.Column(col, background_color='black')],
 
@@ -100,6 +102,10 @@ def main_ui():
 
         if event == 'Asset Loader':
             loader_gui()
+
+        # User Generated event when they select an item from the list
+        if event == 'recipe_item':
+            window['AA'].update(disabled=True)
     #---------- The End of Event Loop ------------------#
 
 
