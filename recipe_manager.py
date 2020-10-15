@@ -42,5 +42,5 @@ def unique_items_required(item_name):
 
 
 # unique_items_required("beacon")
-x = unique_items_required("fire_charge")
-print(x)
+# unique_items_required("fire_charge")
+# print(type(x))
