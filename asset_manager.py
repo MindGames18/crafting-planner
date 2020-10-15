@@ -90,4 +90,4 @@ def convert_to_bytes(file_or_bytes):
 
 def path_to_asset_generator(item_name):
 
-    return constants.abs_recipe_dir + item_name + ".json"
+    return constants.abs_texture_dir + item_name + ".png"

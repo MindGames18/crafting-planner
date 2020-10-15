@@ -108,10 +108,12 @@ def main_ui():
 
             recipe_item = values['recipe_item']
             unique_item_dictionary = rm.unique_items_required(recipe_item)
-            unique_item_list = rm.unique_item_list_converter(unique_item_dictionary)
+            unique_item_list = rm.unique_item_list_converter(
+                unique_item_dictionary)
 
-            for item in unique_item_list :
-                
+            asset_list = list()
+            for item in unique_item_list:
+                asset_list.append(am.path_to_asset_generator(item))
             # Helper to determine shaped/shapeless
             recipe_type = rm.recipe_shape_helper(recipe_item)
 
@@ -123,7 +125,16 @@ def main_ui():
                              'DD', 'EE', 'FF', 'GG', 'HH', 'II']
             for items in grid_elements:
                 window[items].update(image_filename='empty_template.png')
-
+            #################### TEST PURPOSE CODE ONLY ####################
+            #x =[0,0]
+            # y=[0,0]
+            #x[0] = "C:\\gitrepo\\crafting-planner\\jar\\assets\\minecraft\\textures\\items\\wheat.png"
+            #x[1] = "C:\\gitrepo\\crafting-planner\\jar\\assets\\minecraft\\textures\\items\\carrot.png"
+            #y[0] = am.convert_to_bytes(x[0])
+            #y[1] = am.convert_to_bytes(x[1])
+            #window['AA'].update(image_data = y[0])
+            #window['BB'].update(image_data = y[1])
+            #################### TEST PURPOSE CODE ONLY ####################
     #---------- The End of Event Loop ------------------#
 
 
