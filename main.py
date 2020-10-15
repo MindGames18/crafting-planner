@@ -85,7 +85,7 @@ def main_ui():
         [sg.Frame('Output', [[sg.Text("Sample Output area", size=(30, 30))]]),
          sg.Column(col, background_color='black')],
 
-        [sg.Button(button_text="update"), sg.Button(
+        [sg.Button(button_text="Reset", key="empty_grid"), sg.Button(
             button_text='Asset Loader'), sg.Button('Exit')]
     ]
 
@@ -105,7 +105,22 @@ def main_ui():
 
         # User Generated event when they select an item from the list
         if event == 'recipe_item':
-            window['AA'].update(disabled=True)
+            x = rm.unique_items_required(values['recipe_item'])
+
+            for items in x:
+
+                path_to_texture = am.path_to_asset_generator(
+                    values['recipe_item'])
+                print(path_to_texture)
+
+            # Write Helper method to determine shape/shapeless
+
+        if event == 'empty_grid':
+            grid_elements = ['AA', 'BB', 'CC',
+                             'DD', 'EE', 'FF', 'GG', 'HH', 'II']
+            for items in grid_elements:
+                window[items].update(image_filename='empty_template.png')
+
     #---------- The End of Event Loop ------------------#
 
 
