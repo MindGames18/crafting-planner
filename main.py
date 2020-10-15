@@ -1,6 +1,6 @@
 import asset_manager as am
 import PySimpleGUI as sg
-import json_read as jr
+import recipe_manager as rm
 
 '''
     The asset loader UI
@@ -50,6 +50,8 @@ def loader_gui():
 
 '''
     The Main UI method
+    No parametres
+    No returns
 '''
 
 
@@ -58,11 +60,11 @@ def main_ui():
 
     # Checking if Assets have been loaded already
     try:
-        available_recipes = jr.recipe_loader()
+        available_recipes = rm.recipe_loader()
         available_recipes.sort()
     except:
         loader_gui()
-        available_recipes = jr.recipe_loader()
+        available_recipes = rm.recipe_loader()
         available_recipes.sort()
 
     # Coloumn Element

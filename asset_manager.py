@@ -10,6 +10,12 @@ import base64
     All the Assets Related methods go here
 '''
 
+'''
+    method to extract assets into the cache
+    parametre : version
+    returns nothing
+'''
+
 
 def extracting_assets(version):
 
@@ -23,6 +29,11 @@ def extracting_assets(version):
     for file in archive.namelist():
         if file.startswith('assets'):
             archive.extract(file, ext_dir)
+
+
+'''
+    secondary method to delete directory if it is write protected
+'''
 
 
 def remove_readonly(func, path, _):
@@ -48,7 +59,7 @@ def delete_assets():
     :type resize: (Tuple[int, int] or None)
     :return: (bytes) a byte-string object
     :rtype: (bytes)
-    '''
+'''
 
 
 def convert_to_bytes(file_or_bytes):
