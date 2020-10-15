@@ -67,6 +67,8 @@ def main_ui():
         available_recipes = rm.recipe_loader()
         available_recipes.sort()
 
+    grid_elements = ['AA', 'BB', 'CC', 'DD', 'EE', 'FF', 'GG', 'HH', 'II']
+
     # Coloumn Element
     col = [
         [sg.Button(button_text='', size=(15, 6), border_width=5,
@@ -114,15 +116,24 @@ def main_ui():
             asset_list = list()
             for item in unique_item_list:
                 asset_list.append(am.path_to_asset_generator(item))
-            # Helper to determine shaped/shapeless
+
+            byte_data = [0 for i in range(9)]
+            for assets in asset_list:
+                byte_data.append(am.convert_to_bytes(assets))
+            
+            window['AA'].update(image_data = byte_data[0])
+            window['BB'].update(image_data = byte_data[0])
+            window['CC'].update(image_data = byte_data[0])
+
+
+                # Helper to determine shaped/shapeless
             recipe_type = rm.recipe_shape_helper(recipe_item)
 
             if recipe_type == "shapeless":
                 print('sha')
 
         if event == 'empty_grid':
-            grid_elements = ['AA', 'BB', 'CC',
-                             'DD', 'EE', 'FF', 'GG', 'HH', 'II']
+
             for items in grid_elements:
                 window[items].update(image_filename='empty_template.png')
             #################### TEST PURPOSE CODE ONLY ####################
