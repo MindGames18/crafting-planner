@@ -4,6 +4,8 @@ import json_read
 
 '''
     Method to identify unique ingredients required in an item
+    Method's parameter is a string
+    Returns a list of dictionary
 '''
 
 
@@ -15,25 +17,30 @@ def unique_items_required(item_name):
     json_obj = json.loads(fhandle)
 
     # Initialising Lists and counter
-    unique_ingredients = [None for i in range(9)]
     unique_ingredients = []
+    unique_ingredients_list = []
 
-    # Code Logic for shaped and shapeless
+    # Code Logic for shaped and shapeless which Generates the unique item list
     if json_obj["type"] == "crafting_shaped":
         for item in json_obj["key"]:
-            unique_ingredients.append(json_obj["key"][item])
+            unique_ingredients_list.append(json_obj["key"][item])
 
     else:
         for item in json_obj["ingredients"]:
-            if item not in unique_ingredients:
-                unique_ingredients.append(item)
+            if item not in unique_ingredients_list:
+                unique_ingredients_list.append(item)
 
-    #var = 0
-    #print(unique_ingredients[var],type(unique_ingredients[var]))
-    print(unique_ingredients)
+    # Logic to eliminate multiple items possibilties and convert non-dictionary entries into dictionary
+    for iterator in unique_ingredients_list:
+        if type(iterator) is dict:
+            unique_ingredients.append(iterator)
 
-#unique_items_required("torch")
-#unique_items_required("fire_charge")
+        else:
+            unique_ingredients.append(iterator[0])
 
-x= json_read.recipe_loader()
+    return unique_ingredients
+
+
+# unique_items_required("beacon")
+x = unique_items_required("fire_charge")
 print(x)
