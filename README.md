@@ -1,8 +1,8 @@
-# Crafting Planner
+# ⛏️Crafting Planner
 
 Plan your Minecraft stuff!
 
-## ⚡ Features ⚡
+## ⚡Features
 
 📖 Find Recipe - WIP  
 🧮 Calculate Raw materials - WIP  
@@ -10,6 +10,7 @@ Plan your Minecraft stuff!
 
 more features to come....
 
-## Current Dependencies 
-PILLOW - Python's Image Library
-PySimpleGUI - GUI's Framework
+## 📦Current Dependencies
+
+[Pillow](https://pypi.org/project/Pillow/) - Python Imaging Library  
+[PySimpleGUI](https://pypi.org/project/PySimpleGUI/) - Python Simple GUI Package
