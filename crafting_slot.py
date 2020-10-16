@@ -10,7 +10,14 @@ book = {}
 
 
 def slot_item(recipe_name):
+    #print("recipe_name: ",recipe_name)
     for filename in os.listdir(c.abs_recipe_dir):
+
+        #reseting all the values
+        ing_name = []
+        newpat = [[0,0,0],[0,0,0],[0,0,0]]
+        count = 0
+        
         abs_file_path = c.abs_recipe_dir + filename
         read_data = open(abs_file_path).read()  # File Handle
         data = json.loads(read_data)  # Json object
@@ -46,18 +53,17 @@ def slot_item(recipe_name):
                     ing_name.append(item["item"])
                     count+=1
                 else:
-                    ing_name.append(item[0]) 
+                    ing_name.append(item[0]["item"]) #remove ["item"] if u need with metadata
                     count+=1
             for i in range(9-count):
                 ing_name.append(None)
 
  
-    book[name] = ing_name #putting everything in a dict
-    
-    #reseting all the values
-    ing_name = []
-    newpat = [[0,0,0],[0,0,0],[0,0,0]]
-    count = 0
-    #print(filename) just for checking where the file is breaking
+        book[name] = ing_name #putting everything in a dict
+    #print(filename) #just for checking where the file is breaking
 
     return book[recipe_name]
+
+
+
+print(slot_item("fire_charge"))

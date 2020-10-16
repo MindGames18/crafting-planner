@@ -3,68 +3,66 @@ import constants as c
 import json
 
 
-#recipe_name = 
-total =0
 ing_name = []
-recipe_count = 0
 newpat = [[0,0,0],[0,0,0],[0,0,0]]
-#filename = "yellow_wool.json"
 count = 0
+book = {}
 
 
+#def slot_item(recipe_name):
 for filename in os.listdir(c.abs_recipe_dir):
+
+        #reseting all the values
+    ing_name = []
+    newpat = [[0,0,0],[0,0,0],[0,0,0]]
+    count = 0
+        
     abs_file_path = c.abs_recipe_dir + filename
     read_data = open(abs_file_path).read()  # File Handle
     data = json.loads(read_data)  # Json object
 
     name = data["result"]["item"]
     name = name.replace("minecraft:", "")
-    book = {}
-
+    
+        #changing all the patterns from random dimension to 3x3
     if data["type"] == "crafting_shaped":
         for i in range(len(data["pattern"])):
             for j in range(len(data["pattern"][0])):
                 newpat[i][j] = data["pattern"][i][j]
 
-    
+            #writting according to crafting slots in the dict   
         for i in range(len(newpat)):
             for j in range(len(newpat)):
                 if newpat[i][j] in data["key"]:
                     if type(data["key"][newpat[i][j]]) is dict:
                         ing_name.append(data["key"][newpat[i][j]]["item"])
-                        print(ing_name[count])
                         count+=1
             
                     else:
                         ing_name.append(data["key"][newpat[i][j]][0]["item"])
-                        print(ing_name[count])
                         count+=1
                 else:
-                    ing_name.append("NULL")
-                    print(ing_name[count])
+                    ing_name.append(None)
                     count+=1
-   
 
-        #print(name,"\n",ing_name)
-
+        #same for shapeless just puting in the grids
     elif data["type"] == "crafting_shapeless":
         for item in data["ingredients"]:
-            print(data["ingredients"][count]["item"])
-            ing_name.append(data["ingredients"][count]["item"])
-            count+=1
+            if type(item) is dict:
+                ing_name.append(item["item"])
+                count+=1
+            else:
+                ing_name.append(item[0]) 
+                count+=1
         for i in range(9-count):
-            ing_name.append("NULL")
-        #print(ing_name)
+            ing_name.append(None)
 
-    book[name] = ing_name
-    ing_name = []
-    newpat = [[0,0,0],[0,0,0],[0,0,0]]
-    count = 0
-    total+=1
-    if total == 2:
-        break
-    else:
-        continue
+ 
+    book[name] = ing_name #putting everything in a dict
+print(filename) #just for checking where the file is breaking
+print(book["paper"])
+    #return book[recipe_name]
 
 
-print(book[0])
+
+#print(slot_item("anvil"))
