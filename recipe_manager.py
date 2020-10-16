@@ -100,7 +100,6 @@ def recipe_loader():
     return file_names
 
 
-
 ##############
 #Recipe Names#
 ##############
@@ -119,16 +118,16 @@ def r_name():
 
 
 #########################################################
-                    #crafting slots#
+    #crafting slots#
 #########################################################
 def slot_item(recipe_name):
-    
+
     book = {}
     ing_name = []
     newpat = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
     count = 0
     #print("recipe_name: ",recipe_name)
-    
+
     for filename in os.listdir(constants.abs_recipe_dir):
 
         # reseting all the values
@@ -182,7 +181,8 @@ def slot_item(recipe_name):
     # print(filename) #just for checking where the file is breaking
 
     return book[recipe_name]
-=======
+
+
 '''
     Method to determine if the item is shaped or shapeless
     parameter  Item_name
@@ -219,4 +219,3 @@ def unique_item_list_converter(u_dict):
         y = x.replace("minecraft:", "")
         unique_item_list.append(y)
     return unique_item_list
-
