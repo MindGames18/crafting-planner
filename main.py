@@ -67,6 +67,8 @@ def main_ui():
         available_recipes = rm.recipe_loader()
         available_recipes.sort()
 
+    grid_elements = ['AA', 'BB', 'CC', 'DD', 'EE', 'FF', 'GG', 'HH', 'II']
+
     # Coloumn Element
     col = [
         [sg.Button(button_text='', size=(15, 6), border_width=5,
@@ -85,7 +87,7 @@ def main_ui():
         [sg.Frame('Output', [[sg.Text("Sample Output area", size=(30, 30))]]),
          sg.Column(col, background_color='black')],
 
-        [sg.Button(button_text="update"), sg.Button(
+        [sg.Button(button_text="Reset", key="empty_grid"), sg.Button(
             button_text='Asset Loader'), sg.Button('Exit')]
     ]
 
@@ -105,7 +107,45 @@ def main_ui():
 
         # User Generated event when they select an item from the list
         if event == 'recipe_item':
-            window['AA'].update(disabled=True)
+
+            recipe_item = values['recipe_item']
+            unique_item_dictionary = rm.unique_items_required(recipe_item)
+            unique_item_list = rm.unique_item_list_converter(
+                unique_item_dictionary)
+
+            asset_list = list()
+            for item in unique_item_list:
+                asset_list.append(am.path_to_asset_generator(item))
+
+            byte_data = [0 for i in range(9)]
+            for assets in asset_list:
+                byte_data.append(am.convert_to_bytes(assets))
+            
+            window['AA'].update(image_data = byte_data[0])
+            window['BB'].update(image_data = byte_data[0])
+            window['CC'].update(image_data = byte_data[0])
+
+
+                # Helper to determine shaped/shapeless
+            recipe_type = rm.recipe_shape_helper(recipe_item)
+
+            if recipe_type == "shapeless":
+                print('sha')
+
+        if event == 'empty_grid':
+
+            for items in grid_elements:
+                window[items].update(image_filename='empty_template.png')
+            #################### TEST PURPOSE CODE ONLY ####################
+            #x =[0,0]
+            # y=[0,0]
+            #x[0] = "C:\\gitrepo\\crafting-planner\\jar\\assets\\minecraft\\textures\\items\\wheat.png"
+            #x[1] = "C:\\gitrepo\\crafting-planner\\jar\\assets\\minecraft\\textures\\items\\carrot.png"
+            #y[0] = am.convert_to_bytes(x[0])
+            #y[1] = am.convert_to_bytes(x[1])
+            #window['AA'].update(image_data = y[0])
+            #window['BB'].update(image_data = y[1])
+            #################### TEST PURPOSE CODE ONLY ####################
     #---------- The End of Event Loop ------------------#
 
 

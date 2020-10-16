@@ -79,3 +79,15 @@ def convert_to_bytes(file_or_bytes):
     img.save(bio, format="PNG")
     del img
     return bio.getvalue()
+
+
+'''
+    Method to generate path to a an asset
+    Parameter item_name
+    returns path to the asset file
+'''
+
+
+def path_to_asset_generator(item_name):
+
+    return constants.abs_texture_dir + item_name + ".png"
