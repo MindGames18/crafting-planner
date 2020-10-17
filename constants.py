@@ -16,3 +16,6 @@ abs_texture_dir = script_dir + jar_dir + texture_dir
 
 texture_block_dir = "\\assets\\minecraft\\textures\\blocks\\"
 abs_texture_block_dir = script_dir + jar_dir + texture_block_dir
+
+icon_dir = "\\icons\\"
+abs_icon_dir = script_dir + icon_dir
