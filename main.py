@@ -109,24 +109,31 @@ def main_ui():
         if event == 'recipe_item':
 
             recipe_item = values['recipe_item']
+
+            # Generating the Unique item dictionary
             unique_item_dictionary = rm.unique_items_required(recipe_item)
+
+            # Converting the Dictinary to list
             unique_item_list = rm.unique_item_list_converter(
                 unique_item_dictionary)
 
-            asset_list = list()
-            for item in unique_item_list:
-                asset_list.append(am.path_to_asset_generator(item))
+            # Loading and generating a list of  dictionary of {unique_item : byte_data_of_the_texture}
 
-            byte_data = [0 for i in range(9)]
-            for assets in asset_list:
-                byte_data.append(am.convert_to_bytes(assets))
+            grid = rm.slot_item(recipe_item)
+
+            # Updating ToolTip
+            for x in range(len(grid_elements)):
+                window[grid_elements[x]].SetTooltip(grid[x])
+
+            # Loading Textures into a similar list
+            img_name_list = am.img_data_helper(grid)
             
-            window['AA'].update(image_data = byte_data[0])
-            window['BB'].update(image_data = byte_data[0])
-            window['CC'].update(image_data = byte_data[0])
+            # Converting the Textures to Byte data and updating the window
+            img_data_list = am.img_byte_data_converter(img_name_list)
+            for x in range(len(grid_elements)):
+                window[grid_elements[x]].update(image_data=img_data_list[x])
 
-
-                # Helper to determine shaped/shapeless
+            # Helper to determine shaped/shapeless
             recipe_type = rm.recipe_shape_helper(recipe_item)
 
             if recipe_type == "shapeless":
@@ -137,16 +144,16 @@ def main_ui():
             for items in grid_elements:
                 window[items].update(image_filename='empty_template.png')
             #################### TEST PURPOSE CODE ONLY ####################
-            #x =[0,0]
+            # x =[0,0]
             # y=[0,0]
-            #x[0] = "C:\\gitrepo\\crafting-planner\\jar\\assets\\minecraft\\textures\\items\\wheat.png"
-            #x[1] = "C:\\gitrepo\\crafting-planner\\jar\\assets\\minecraft\\textures\\items\\carrot.png"
-            #y[0] = am.convert_to_bytes(x[0])
-            #y[1] = am.convert_to_bytes(x[1])
-            #window['AA'].update(image_data = y[0])
-            #window['BB'].update(image_data = y[1])
+            # x[0] = "C:\\gitrepo\\crafting-planner\\jar\\assets\\minecraft\\textures\\items\\wheat.png"
+            # x[1] = "C:\\gitrepo\\crafting-planner\\jar\\assets\\minecraft\\textures\\items\\carrot.png"
+            # y[0] = am.convert_to_bytes(x[0])
+            # y[1] = am.convert_to_bytes(x[1])
+            # window['AA'].update(image_data = y[0])
+            # window['BB'].update(image_data = y[1])
             #################### TEST PURPOSE CODE ONLY ####################
-    #---------- The End of Event Loop ------------------#
+            #---------- The End of Event Loop ------------------#
 
 
 main_ui()
