@@ -117,7 +117,10 @@ def main_ui():
             unique_item_list = rm.unique_item_list_converter(
                 unique_item_dictionary)
 
+            # Loading and generating a list of  dictionary of {unique_item : byte_data_of_the_texture}
+
             grid = rm.slot_item(recipe_item)
+
             # Updating ToolTip
             for x in range(len(grid_elements)):
                 window[grid_elements[x]].SetTooltip(grid[x])
