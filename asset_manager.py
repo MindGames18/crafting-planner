@@ -91,3 +91,42 @@ def convert_to_bytes(file_or_bytes):
 def path_to_asset_generator(item_name):
 
     return constants.abs_texture_dir + item_name + ".png"
+
+
+'''
+    Method to find and load img data into a 9 element list according to the grid element list
+    parametre grid
+    returns img_data list
+'''
+
+
+def img_data_helper(grid):
+
+    name_list = list()
+    for item in grid:
+        if item == None:
+            name_list.append("empty_template.png")
+        else:
+            parsed_name = item.replace(":", "__")
+            meta_data = '0'
+            img_name = parsed_name + "__" + meta_data + ".png"
+            name_list.append(img_name)
+
+    return name_list
+
+
+'''
+    Method to convert Image Name list inot image byte data list
+    Parametre name_list
+    returns ByteData
+'''
+
+
+def img_byte_data_converter(name_list):
+
+    byte_list = list()
+    for items in name_list:
+        path = constants.abs_icon_dir + items
+        byte_list.append(convert_to_bytes(path))
+
+    return byte_list

@@ -125,6 +125,13 @@ def main_ui():
             for x in range(len(grid_elements)):
                 window[grid_elements[x]].SetTooltip(grid[x])
 
+            # Loading Textures into a similar list
+            img_name_list = am.img_data_helper(grid)
+
+            # Converting the Textures to Byte data and updating the window
+            img_data_list = am.img_byte_data_converter(img_name_list)
+            for x in range(len(grid_elements)) :
+                window[grid_elements[x]].update(image_data = img_data_list[x])
             '''
             asset_list = list()
             for item in unique_item_list:
