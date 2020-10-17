@@ -52,6 +52,7 @@ for iterator in x:
         grid = rm.slot_item(iterator)
         img_name_list = am.img_data_helper(grid)
         img_data_list = am.img_byte_data_converter(img_name_list)
+
     except:
 
         f.write(iterator)
