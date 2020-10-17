@@ -1,4 +1,7 @@
 import recipe_manager as rm
+import asset_manager as am
+
+'''
 ####################################################
 #####WARNING DONT RUN BOTH  THE MODULES AT ONCE#####
 #COMMENT THE OTHER MODULES WHICH YOU ARENT CHECKING#
@@ -35,4 +38,24 @@ for iterator in x:
         i += 1
     except:
         print("failed slot", iterator)
+###############################################
+'''
+###############################################
+# Dev code to log all recipes which failed to load due to meta data
+# and logs the data in log.txt
+x = rm.r_name()
+print(len(x))
+f = open("failed_log.txt", "w")
+
+for iterator in x:
+    try:
+        grid = rm.slot_item(iterator)
+        img_name_list = am.img_data_helper(grid)
+        img_data_list = am.img_byte_data_converter(img_name_list)
+    except:
+
+        f.write(iterator)
+        f.write("\n")
+
+f.close()
 ###############################################

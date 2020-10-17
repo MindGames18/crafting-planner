@@ -127,7 +127,7 @@ def main_ui():
 
             # Loading Textures into a similar list
             img_name_list = am.img_data_helper(grid)
-
+            
             # Converting the Textures to Byte data and updating the window
             img_data_list = am.img_byte_data_converter(img_name_list)
             for x in range(len(grid_elements)):
