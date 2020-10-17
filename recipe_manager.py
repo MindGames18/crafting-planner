@@ -212,10 +212,7 @@ def recipe_shape_helper(item_name):
 def unique_item_list_converter(u_dict):
 
     u_items = list()
-    unique_item_list = list()
     for items in u_dict:
         u_items.append(items['item'])
-    for x in u_items:
-        y = x.replace("minecraft:", "")
-        unique_item_list.append(y)
-    return unique_item_list
+
+    return u_items
