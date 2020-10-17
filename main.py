@@ -130,21 +130,8 @@ def main_ui():
 
             # Converting the Textures to Byte data and updating the window
             img_data_list = am.img_byte_data_converter(img_name_list)
-            for x in range(len(grid_elements)) :
-                window[grid_elements[x]].update(image_data = img_data_list[x])
-            '''
-            asset_list = list()
-            for item in unique_item_list:
-                asset_list.append(am.path_to_asset_generator(item))
-
-            byte_data = [0 for i in range(9)]
-            for assets in asset_list:
-                byte_data.append(am.convert_to_bytes(assets))
-
-            window['AA'].update(image_data=byte_data[0])
-            window['BB'].update(image_data=byte_data[0])
-            window['CC'].update(image_data=byte_data[0])
-            '''
+            for x in range(len(grid_elements)):
+                window[grid_elements[x]].update(image_data=img_data_list[x])
 
             # Helper to determine shaped/shapeless
             recipe_type = rm.recipe_shape_helper(recipe_item)
