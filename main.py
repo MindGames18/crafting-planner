@@ -109,7 +109,11 @@ def main_ui():
         if event == 'recipe_item':
 
             recipe_item = values['recipe_item']
+
+            # Generating the Unique item dictionary
             unique_item_dictionary = rm.unique_items_required(recipe_item)
+
+            # Converting the Dictinary to list
             unique_item_list = rm.unique_item_list_converter(
                 unique_item_dictionary)
 
