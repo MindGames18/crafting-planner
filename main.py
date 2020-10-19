@@ -111,11 +111,11 @@ def main_ui():
             recipe_item = values['recipe_item']
 
             # Generating the Unique item dictionary
-            unique_item_dictionary = rm.unique_items_required(recipe_item)
+            # unique_item_dictionary = rm.unique_items_required(recipe_item)
 
             # Converting the Dictinary to list
-            unique_item_list = rm.unique_item_list_converter(
-                unique_item_dictionary)
+            # unique_item_list = rm.unique_item_list_converter(
+            #     unique_item_dictionary)
 
             # Loading and generating a list of  dictionary of {unique_item : byte_data_of_the_texture}
 
@@ -127,7 +127,7 @@ def main_ui():
 
             # Loading Textures into a similar list
             img_name_list = am.img_data_helper(grid)
-            
+
             # Converting the Textures to Byte data and updating the window
             img_data_list = am.img_byte_data_converter(img_name_list)
             for x in range(len(grid_elements)):
