@@ -17,4 +17,4 @@ more features to come....
 [Pillow](https://pypi.org/project/Pillow/) - Python Imaging Library  
 [PySimpleGUI](https://pypi.org/project/PySimpleGUI/) - Python Simple GUI Package
 
-testing discord integration
+testing discord integration x2
